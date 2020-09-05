@@ -1,0 +1,31 @@
+version: '3.2'
+services:
+    database:
+        image: mysql:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: 1234
+            MYSQL_DATABASE: test
+        volumes:
+            - "./.docker/mysql:/var/lib/mysql" #zapisuje bazę danych w katalogu z moim projektem
+    backend:
+        image: backend
+        build:
+            context: .
+            dockerfile: docker/Dockerfile_backend
+        links:
+            - database
+        volumes:
+            - ".:/var/www"
+    nginx:
+        image: nginx 
+        build:
+            context: .
+            dockerfile: docker/Dockerfile_nginx
+        links:
+            - backend
+        ports:
+            - "4040:80"
+        volumes:
+            - type: bind
+              source: ./public
+              target: /var/www/public

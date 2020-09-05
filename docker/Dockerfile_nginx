@@ -1,0 +1,8 @@
+FROM nginx:alpine
+MAINTAINER Marta Kicza <marta.agata.kicza@gmail.com>
+
+COPY docker/nginx/default.conf /etc/nginx/conf.d/
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+  && ln -sf /dev/stderr /var/log/nginx/error.log
+
+CMD ["nginx-debug", "-g", "daemon off;"]
