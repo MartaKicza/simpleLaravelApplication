@@ -14,7 +14,9 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'lastname', 'email', 'password', 'type_aw', 'type_l', 'phone', 'education', 'address_id', 'correspondal_address_id' 
+        'name', 'lastname', 'email', 'password', 'type_aw', 'type_l',
+        'phone', 'education',
+        'address_id', 'correspondal_address_id'
     ];
 
     /**
@@ -26,38 +28,40 @@ class User extends Model
         'password'
     ];
 
-	public function address()
-	{
-		return $this->belongsTo('App\Address', 'address_id');
-	}
+    public function address()
+    {
+        return $this->belongsTo('App\Address', 'address_id');
+    }
 
-	public function correspondal_address()
-	{
-		return $this->belongsTo('App\Address', 'correspondal_address_id');
-	}
+    public function correspondalAddress()
+    {
+        return $this->belongsTo('App\Address', 'correspondal_address_id');
+    }
 
-	public function logs()
-	{
-		return $this->morphMany('App\Log', 'loggable');
-	}
+    public function logs()
+    {
+        return $this->morphMany('App\Log', 'loggable');
+    }
 
-	public function isAdministrationWorker() {
-		return (int)$this->type_aw === 1 ;
-	}
+    public function isAdministrationWorker()
+    {
+        return (int)$this->type_aw === 1 ;
+    }
 
-	public function isLecturer() {
-		return (int)$this->type_l === 1 ;
-	}
+    public function isLecturer()
+    {
+        return (int)$this->type_l === 1 ;
+    }
 
-	/**
-	 * The event map for the model.
-	 *
-	 * @var array
-	 */
-	protected $dispatchesEvents = [
-		'saved' => UserSaved::class,
-		'deleted' => UserDeleted::class,
-	];
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'saved' => UserSaved::class,
+        'deleted' => UserDeleted::class,
+    ];
 
     public function scopeSearchByTerm($query, $term)
     {
@@ -68,7 +72,8 @@ class User extends Model
         });
     }
 
-    public function scopeUserOrderBy($query, $field, $dir) {
+    public function scopeUserOrderBy($query, $field, $dir)
+    {
         switch ($field) {
             case 'type':
                 return $this->scopeOrderByType($query, $dir);
@@ -106,5 +111,4 @@ class User extends Model
     {
         return $query->orderBy('email', $dir);
     }
-
 }

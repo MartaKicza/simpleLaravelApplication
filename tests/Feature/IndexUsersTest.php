@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class IndexUsersTest extends TestCase
 {
-	use RefreshDatabase;
+    use RefreshDatabase;
 
     /**
      * Test listing users
@@ -18,7 +18,7 @@ class IndexUsersTest extends TestCase
     public function testUsersListing()
     {
         $response = $this->withHeaders([
-		])->getJson('/api/users', []);
+        ])->getJson('/api/users', []);
 
         $response->assertStatus(200);
         $response->assertJsonPath('per_page', config('test.pagination'));

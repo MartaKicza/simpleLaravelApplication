@@ -50,33 +50,33 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-		if ($request->wantsJson()) {
-			$response = get_class($exception) === 'Illuminate\Database\Eloquent\ModelNotFoundException' 
-				? [
-					'errors' => 'Model not found.'
-				]
-				: [
-					'errors' => 'An error occured.'
-				];
+        if ($request->wantsJson()) {
+            $response = get_class($exception) === 'Illuminate\Database\Eloquent\ModelNotFoundException'
+                ? [
+                    'errors' => 'Model not found.'
+                ]
+                : [
+                    'errors' => 'An error occured.'
+                ];
 
-			if (config('app.debug')) {
-				$response['exception'] = get_class($exception);
-				$response['message'] = $exception->getMessage();
-				$response['trace'] = $exception->getTrace();
-			}
+            if (config('app.debug')) {
+                $response['exception'] = get_class($exception);
+                $response['message'] = $exception->getMessage();
+                $response['trace'] = $exception->getTrace();
+            }
 
-			$status = get_class($exception) === 'Illuminate\Database\Eloquent\ModelNotFoundException' 
-				? 404
-				: 400;
+            $status = get_class($exception) === 'Illuminate\Database\Eloquent\ModelNotFoundException'
+                ? 404
+                : 400;
 
-			if ($this->isHttpException($exception)) {
-				// Grab the HTTP status code from the Exception
-				$status = $exception->getStatusCode();
-			}
+            if ($this->isHttpException($exception)) {
+                // Grab the HTTP status code from the Exception
+                $status = $exception->getStatusCode();
+            }
 
-			return response()->json($response, $status);
-		}
+            return response()->json($response, $status);
+        }
 
-		return parent::render($request, $exception);
+        return parent::render($request, $exception);
     }
 }

@@ -9,7 +9,7 @@ use App\User;
 
 class ShowUserTest extends TestCase
 {
-	use RefreshDatabase;
+    use RefreshDatabase;
 
     /**
      * Test displaying user without addresses
@@ -18,12 +18,12 @@ class ShowUserTest extends TestCase
      */
     public function testShowUserWithoutAddresses()
     {
-		$user = factory(User::class)->state('lecturer')->create();
+        $user = factory(User::class)->state('lecturer')->create();
         $response = $this->withHeaders([
-		])->getJson("/api/user/{$user->id}", []);
+        ])->getJson("/api/user/{$user->id}", []);
 
-		$response->assertStatus(200)
-		   ->assertJson(["user" => $user->toArray()]);
+        $response->assertStatus(200)
+           ->assertJson(["user" => $user->toArray()]);
     }
 
     /**
@@ -33,13 +33,13 @@ class ShowUserTest extends TestCase
      */
     public function testShowUserWithAddresses()
     {
-		$user = factory(User::class)->state('administration_worker')->create();
+        $user = factory(User::class)->state('administration_worker')->create();
         $response = $this->withHeaders([
-		])->getJson("/api/user/{$user->id}", []);
+        ])->getJson("/api/user/{$user->id}", []);
 
-		$response->assertStatus(200)
-		   ->assertJson(["user" => $user->toArray()])
-		   ->assertJsonPath("user.address.id", $user->address_id)
-		   ->assertJsonPath("user.correspondal_address.id", $user->correspondal_address_id);
-	}
+        $response->assertStatus(200)
+           ->assertJson(["user" => $user->toArray()])
+           ->assertJsonPath("user.address.id", $user->address_id)
+           ->assertJsonPath("user.correspondal_address.id", $user->correspondal_address_id);
+    }
 }

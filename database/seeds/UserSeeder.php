@@ -11,6 +11,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-		factory(App\User::class, config('test.random_rows'))->create();
+        factory(App\User::class, config('test.random_rows'))->create();
     }
 }

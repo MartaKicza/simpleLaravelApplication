@@ -26,6 +26,9 @@ class LogAddressSaved
      */
     public function handle(AddressSaved $event)
     {
-        $event->address->logs()->create(['method' => 'save', 'data' => $event->address->toJson()]);
+        $event->address->logs()->create([
+            'method' => 'save',
+            'data' => $event->address->toJson()
+        ]);
     }
 }

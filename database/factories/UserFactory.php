@@ -18,15 +18,15 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-	$type_aw = $faker->boolean; 
-	$type_l = $faker->boolean; 
-	if ($type_aw) {
-		$address1 = factory(App\Address::class)->create();
-		$address2 = factory(App\Address::class)->create();
-	}
-	if (!$type_aw && !$type_l) {
-		$type_l = true;
-	}
+    $type_aw = $faker->boolean;
+    $type_l = $faker->boolean;
+    if ($type_aw) {
+        $address1 = factory(App\Address::class)->create();
+        $address2 = factory(App\Address::class)->create();
+    }
+    if (!$type_aw && !$type_l) {
+        $type_l = true;
+    }
     return [
         'name' => $faker->firstName,
         'lastname' => $faker->lastName,
@@ -34,46 +34,46 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => $faker->password,
         'type_aw' => $type_aw,
         'type_l' => $type_l,
-		'phone' => $type_l ? $faker->phoneNumber : null,
-		'education' => $type_l ? $faker->randomElement(config('test.education_degrees')) : null,
-		'address_id' => $type_aw ? $address1->id : null,
-		'correspondal_address_id' => $type_aw ? $address2->id : null,
+        'phone' => $type_l ? $faker->phoneNumber : null,
+        'education' => $type_l ? $faker->randomElement(config('test.education_degrees')) : null,
+        'address_id' => $type_aw ? $address1->id : null,
+        'correspondal_address_id' => $type_aw ? $address2->id : null,
     ];
 });
 
 $factory->state(App\User::class, 'lecturer', function ($faker) {
     return [
-		'type_l' => 1,
-		'type_aw' => 0,
-		'phone' => $faker->phoneNumber,
-		'education' => $faker->randomElement(config('test.education_degrees')),
-		'address_id' => null,
-		'correspondal_address_id' => null,
+        'type_l' => 1,
+        'type_aw' => 0,
+        'phone' => $faker->phoneNumber,
+        'education' => $faker->randomElement(config('test.education_degrees')),
+        'address_id' => null,
+        'correspondal_address_id' => null,
     ];
 });
 
 $factory->state(App\User::class, 'administration_worker', function ($faker) {
-	$address1 = factory(App\Address::class)->create();
-	$address2 = factory(App\Address::class)->create();
-	return [
-		'type_l' => false,
-		'type_aw' => true,
-		'phone' => null,
-		'education' => null,
-		'address_id' => $address1->id,
-		'correspondal_address_id' => $address2->id,
+    $address1 = factory(App\Address::class)->create();
+    $address2 = factory(App\Address::class)->create();
+    return [
+        'type_l' => false,
+        'type_aw' => true,
+        'phone' => null,
+        'education' => null,
+        'address_id' => $address1->id,
+        'correspondal_address_id' => $address2->id,
     ];
 });
 
 $factory->state(App\User::class, 'lecturer_administration_worker', function ($faker) {
-	$address1 = factory(App\Address::class)->create();
-	$address2 = factory(App\Address::class)->create();
+    $address1 = factory(App\Address::class)->create();
+    $address2 = factory(App\Address::class)->create();
     return [
-		'type_l' => true,
-		'type_aw' => true,
-		'phone' => $faker->phoneNumber,
-		'education' => $faker->randomElement(config('test.education_degrees')),
-		'address_id' => $address1->id,
-		'correspondal_address_id' => $address2->id,
+        'type_l' => true,
+        'type_aw' => true,
+        'phone' => $faker->phoneNumber,
+        'education' => $faker->randomElement(config('test.education_degrees')),
+        'address_id' => $address1->id,
+        'correspondal_address_id' => $address2->id,
     ];
 });

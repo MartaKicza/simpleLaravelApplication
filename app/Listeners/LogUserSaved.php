@@ -26,6 +26,9 @@ class LogUserSaved
      */
     public function handle(UserSaved $event)
     {
-        $event->user->logs()->create(['method' => 'save', 'data' => $event->user->makeHidden('address')->makeHidden('correspondal_address')->toJson()]);
+        $event->user->logs()->create([
+            'method' => 'save',
+            'data' => $event->user->makeHidden('address')->makeHidden('correspondalAddress')->toJson()
+        ]);
     }
 }

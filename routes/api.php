@@ -24,8 +24,8 @@ Route::middleware('api')->put('/user/{user}', 'UserController@update')->where('u
 
 Route::middleware('api')->delete('/user/{user}', 'UserController@delete')->where('user', '[0-9]+')->name('user.delete');
 
-Route::fallback(function(){
+Route::fallback(function () {
     return response()->json([
-		'error' => 404,
+        'error' => 404,
         'message' => 'Page Not Found.'], 404);
 });

@@ -12,18 +12,18 @@ class Address extends Model
         'region', 'city', 'country', 'code', 'street', 'number'
     ];
 
-	public function logs()
-	{
-		return $this->morphMany('App\Log', 'loggable');
-	}
+    public function logs()
+    {
+        return $this->morphMany('App\Log', 'loggable');
+    }
 
-	/**
-	 * The event map for the model.
-	 *
-	 * @var array
-	 */
-	protected $dispatchesEvents = [
-		'saved' => AddressSaved::class,
-		'deleted' => AddressDeleted::class,
-	];
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'saved' => AddressSaved::class,
+        'deleted' => AddressDeleted::class,
+    ];
 }

@@ -11,7 +11,8 @@ class Log extends Model
     ];
 
 
-	public function loggable() {
+    public function loggable()
+    {
         return $this->morphTo();
-	}
+    }
 }

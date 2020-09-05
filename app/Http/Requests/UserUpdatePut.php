@@ -30,36 +30,36 @@ class UserUpdatePut extends FormRequest
     {
         return [
 
-			'name' => 'not_regex:/[!@#$%^&*()""\';:<>\/\[\]]/|required|max:255',
-			'lastname' => 'not_regex:/[!@#$%^&*()""\';:<>\/\[\]]/|required|max:255',
-			'email' => [
-				'email',
-				'required',
-				'max:255',
-				Rule::unique('users')->ignore($this->user->id),
-			],
-			'password' => 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|confirmed|min:8',
-			'type_aw' => 'boolean|required',
-			'type_l' => 'boolean|required',
-			'phone' => "string|required_if:type_l,1|max:255",
-			'education' => [
-				Rule::in(config('test.education_degrees')),
-				"required_if:type_l,1"
-			],
-			'address' => "array|required_if:type_aw,1",
-			"correspondal_address" => "array|required_if:type_aw,1",
-			"address.region" => "string|max:255|required_if:type_aw,1",
-			"address.city" => "string|max:255|required_if:type_aw,1",
-			"address.country" => "string|max:255|required_if:type_aw,1",
-			"address.code" => "string|max:255|required_if:type_aw,1",
-			"address.street" => "string|max:255",
-			"address.number" => "string|max:255|required_if:type_aw,1",
-			"correspondal_address.region" => "string|max:255|required_if:type_aw,1",
-			"correspondal_address.city" => "string|max:255|required_if:type_aw,1",
-			"correspondal_address.country" => "string|max:255|required_if:type_aw,1",
-			"correspondal_address.code" => "string|max:255|required_if:type_aw,1",
-			"correspondal_address.street" => "string|max:255",
-			"correspondal_address.number" => "string|max:255|required_if:type_aw,1"
+            'name' => 'not_regex:/[!@#$%^&*()""\';:<>\/\[\]]/|required|max:255',
+            'lastname' => 'not_regex:/[!@#$%^&*()""\';:<>\/\[\]]/|required|max:255',
+            'email' => [
+                'email',
+                'required',
+                'max:255',
+                Rule::unique('users')->ignore($this->user->id),
+            ],
+            'password' => 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|confirmed|min:8',
+            'type_aw' => 'boolean|required',
+            'type_l' => 'boolean|required',
+            'phone' => "string|required_if:type_l,1|max:255",
+            'education' => [
+                Rule::in(config('test.education_degrees')),
+                "required_if:type_l,1"
+            ],
+            'address' => "array|required_if:type_aw,1",
+            "correspondal_address" => "array|required_if:type_aw,1",
+            "address.region" => "string|max:255|required_if:type_aw,1",
+            "address.city" => "string|max:255|required_if:type_aw,1",
+            "address.country" => "string|max:255|required_if:type_aw,1",
+            "address.code" => "string|max:255|required_if:type_aw,1",
+            "address.street" => "string|max:255",
+            "address.number" => "string|max:255|required_if:type_aw,1",
+            "correspondal_address.region" => "string|max:255|required_if:type_aw,1",
+            "correspondal_address.city" => "string|max:255|required_if:type_aw,1",
+            "correspondal_address.country" => "string|max:255|required_if:type_aw,1",
+            "correspondal_address.code" => "string|max:255|required_if:type_aw,1",
+            "correspondal_address.street" => "string|max:255",
+            "correspondal_address.number" => "string|max:255|required_if:type_aw,1"
         ];
     }
 
@@ -73,9 +73,9 @@ class UserUpdatePut extends FormRequest
     {
         if ($validator->passes()) {
             $validator->after(function ($validator) {
-				$data = $validator->valid();
-				$message = 'Choose at least one type.';
-				if (!$data['type_aw'] && !$data['type_l']) {
+                $data = $validator->valid();
+                $message = 'Choose at least one type.';
+                if (!$data['type_aw'] && !$data['type_l']) {
                     $validator->errors()->add('type_aw', $message);
                     $validator->errors()->add('type_l', $message);
                 }
