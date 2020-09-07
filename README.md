@@ -57,7 +57,11 @@ If you want to shut down the container type:
 
 ## Tests
 
-Then you can run tests:
+To run tests go to backend container:
+
+`docker-compose exec backend sh`
+
+And type:
 
 `php artisan test`
 
@@ -78,6 +82,10 @@ And type:
 Laravel app is running at [http://localhost:4040](http://localhost:4040). 
 
 React app is running at [http://localhost:3000](http://localhost:3000). 
+
+## Documentation
+
+Swager api for create action can be found here [https://app.swaggerhub.com/apis-docs/MartaKicza/teb/1.0.0](https://app.swaggerhub.com/apis-docs/MartaKicza/teb/1.0.0).
 
 ## License
 
