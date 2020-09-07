@@ -1,0 +1,45 @@
+.Table-containter {
+    overflow-x: auto;
+}
+.Table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+.Table th {
+    padding: 0.3em 1em;
+    border: 1px solid #dddddd;
+    border-bottom: 1px solid #333;
+    margin: 0;
+    background-color: #f9f9f9;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.Table td {
+    padding: 2px 3px;
+    border: 1px solid #ddd;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+.Table tr:nth-child(2n) td {
+    background-color: #f9f9f9;
+
+}
+
+.Table tr:hover td {
+    background-color:#fff6b2;
+    cursor: pointer;
+}
+
+.table-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.table-pagination .Button.next-page {
+    margin-left: auto;
+}

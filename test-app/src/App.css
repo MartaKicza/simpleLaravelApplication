@@ -1,0 +1,33 @@
+html {
+    background: #333;
+}
+.App {
+    padding: 8px;
+    color: #333;
+    font-family: "Roboto", sans-serif;
+    background: #333;
+}
+
+.App-conainer {
+    width: 80%;
+    margin: auto;
+}
+
+.App-header {
+    margin-bottom: 3em;
+    color: #fff;
+    text-align: center;
+}
+
+.App-heading {
+    margin: 0;
+    padding: 0.3em 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.App-block {
+    background: #fff;
+    box-shadow: 2px 2px 10px 0px #0000008a;
+    margin-bottom: 2em;
+}

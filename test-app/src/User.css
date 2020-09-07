@@ -1,0 +1,16 @@
+.User-detail {
+    padding: 0.6em 2em;
+    border: 1px solid #ddd;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+.User-detail:nth-child(2n) {
+    background-color: #f9f9f9;
+}
+.User-detail-name {
+    font-weight: 700;
+}
+.User-address {
+    margin-top: 0.5em;
+    margin-left: 1em;
+}

@@ -1,0 +1,39 @@
+.Button {
+    padding: 0.5em 1.5em;
+    background: #fff6b2;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #dddddd;
+    color: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.Button:focus {
+    outline: none;
+}
+.Button:hover {
+    box-shadow: 0px 0px 1px 0px #00000094 inset;
+    background: #fff395;
+}
+
+.Button-danger {
+    background-color: #d42525;
+    color: #fff;
+    border-color: #a91f1f;
+}
+
+.Button-danger:hover {
+    background: #a91f1f;
+}
+
+.Button-success {
+    background: #c0ff90;
+}
+.Button-success:hover {
+    background: #a6dc7c;
+}
+
+.Button.w-100 {
+    width: 100%;
+}

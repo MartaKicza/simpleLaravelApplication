@@ -1,0 +1,23 @@
+.Alert {
+    padding: 0.5em 1em;
+    font-size: 1.1em;
+    background: #fff;
+    margin-bottom: 1em;
+}
+
+.Alert.success {
+    background: #c0ff90;
+}
+
+.Alert.info {
+    background: #fef1b2;
+}
+
+.Alert.danger {
+    background-color: #d42525;
+    color: #fff;
+}
+
+.Alert.warning {
+    background: #fef1b2;
+}

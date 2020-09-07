@@ -1,0 +1,35 @@
+.Form-row {
+    display: flex;
+    border: 1px solid #ddd;
+    margin: 0;
+    background-color: #f2f2f2;
+    align-items: center;
+}
+.Form-row:nth-child(2n) {
+    background-color: #f9f9f9;
+}
+
+.Form-row label {
+    display: inline-block;
+    padding: 0.6em 2em;
+    border-right: 1px solid #ddd;
+    width: 30%;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.Form-row input {
+    padding: 0.8em 2em;
+    border: 0px;
+    width: 70%;
+    box-sizing: border-box;
+}
+
+.Form-row input[type=checkbox] {
+    width: auto;
+}
+
+.Form h4 {
+    margin: 0;
+    padding: 1em 2em 1em 5em;
+}
