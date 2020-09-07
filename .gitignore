@@ -14,4 +14,4 @@ yarn-error.log
 .docker-*/
 *.swp
 *.swo
-/test-app
+.vimrc

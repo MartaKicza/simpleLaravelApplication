@@ -113,8 +113,12 @@ class UserController extends Controller
                 // no longer an administration worker
                 // need to delete addresses
                 $user->load('address', 'correspondalAddress');
-                $user->address->delete();
-                $user->correspondalAddress->delete();
+                if ($user->address) {
+                    $user->address->delete();
+                }
+                if ($user->correspondalAddress) {
+                    $user->correspondalAddress->delete();
+                }
             }
             if (!$user->isLecturer()) {
                 $user->phone = null;
@@ -143,8 +147,12 @@ class UserController extends Controller
         DB::transaction(function () use ($user) {
             if ($user->isAdministrationWorker()) {
                 $user->load('address', 'correspondalAddress');
-                $user->address->delete();
-                $user->correspondalAddress->delete();
+                if ($user->address) {
+                    $user->address->delete();
+                }
+                if ($user->correspondalAddress) {
+                    $user->correspondalAddress->delete();
+                }
             }
             $user->delete();
         });
